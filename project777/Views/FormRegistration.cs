@@ -84,21 +84,48 @@ namespace project777
                 return;
             }
 
-            ///я заебался
-            ///var str = textBox_name.Text;
-            ///var regex = new Regex(@"\d");
-            ///if (str.Contains(char.(regex)))
-            ///{
+          
+            string pattern1 = @"^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$";
+            if (!Regex.IsMatch(textBox_password.Text, pattern1))
+            {
 
-               /// MessageBox.Show("Заполните имя", "Ошибка", MessageBoxButtons.OK);
-                ///return;
-            ///}
+                MessageBox.Show("Пароль должен содержать не менее 6 символов, по крайней мере 1 заглавную букву, 1 строчную букву и 1 цифру без пробелов.", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
 
+            string pattern2 = @"^[А-я,а-я]+$";
+            if (!Regex.IsMatch(textBox_name.Text, pattern2))
+            {
 
+                MessageBox.Show("Неправильно введено имя", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+
+            if (!Regex.IsMatch(textBox_lastname.Text, pattern2))
+            {
+
+                MessageBox.Show("Неправильно введена фамилия", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+
+            if (!Regex.IsMatch(textBox_name.Text, pattern2))
+            {
+
+                MessageBox.Show("Неправильно введено отчество", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+
+            string pattern3 = @"^[A-Za-z0-9]+([A-Za-z0-9]*|[._-]?[A-Za-z0-9]+)*$";
+            if (!Regex.IsMatch(textBox_login.Text, pattern3))
+            {
+
+                MessageBox.Show("Логин может состоять только из латинских букв и цифр. Без пробелов и спец. знаков.", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
 
 
             var context = new Context();
-            var existUser = context.Users.FirstOrDefault(x=>x.Login.ToLower()==textBox_login.Text.ToLower());
+            var existUser = context.Users.FirstOrDefault(x=>x.Login==textBox_login.Text.ToLower());
             if (existUser!=null)
             {
 
@@ -107,10 +134,11 @@ namespace project777
 
             }
 
+
             var user = new User
             {
                 Name = textBox_name.Text,
-                Login = textBox_login.Text,
+                Login = textBox_login.Text.ToLower(),
                 Password = textBox_password.Text,
             };
             context.Users.Add(user);
@@ -119,7 +147,7 @@ namespace project777
             var usercodename = new UserCodeName
             {
                 UserId = user.Id,
-                CodeName = textBox_codename.Text,
+                CodeName = textBox_codename.Text.ToLower(),
                 Clue = textBox_clue.Text,
             };
             context.UserCodeNames.Add(usercodename);

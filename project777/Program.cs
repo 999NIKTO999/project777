@@ -15,14 +15,20 @@ namespace project777
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            var context = new Context();
-            /// context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-            Application.Run(new Form1());
-
+            try
+            {
+                Application.SetHighDpiMode(HighDpiMode.SystemAware);
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                var context = new Context();
+               // context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+                Application.Run(new Form1());
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }

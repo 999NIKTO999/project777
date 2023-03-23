@@ -47,6 +47,7 @@ namespace project777
             this.textBox_login.Name = "textBox_login";
             this.textBox_login.Size = new System.Drawing.Size(411, 23);
             this.textBox_login.TabIndex = 0;
+            this.textBox_login.TextChanged += new System.EventHandler(this.textBox_login_TextChanged);
             // 
             // textBox_password
             // 
@@ -92,6 +93,7 @@ namespace project777
             this.bt_reset.TabIndex = 5;
             this.bt_reset.Text = "забыли пароль?";
             this.bt_reset.UseVisualStyleBackColor = true;
+            this.bt_reset.Click += new System.EventHandler(this.bt_reset_Click);
             // 
             // bt_registration
             // 
@@ -128,7 +130,7 @@ namespace project777
             this.Controls.Add(this.textBox_password);
             this.Controls.Add(this.textBox_login);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

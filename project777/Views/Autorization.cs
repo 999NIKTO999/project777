@@ -26,7 +26,7 @@ namespace project777
         private void bt_auth_Click(object sender, EventArgs e)
         {
             var context = new Context();
-            var existUser = context.Users.FirstOrDefault(x => x.Login.ToLower() == textBox_login.Text.ToLower() && x.Password == textBox_password.Text);
+            var existUser = context.Users.FirstOrDefault(x => x.Login == textBox_login.Text.ToLower() && x.Password == textBox_password.Text);
             if (existUser == null)
             {
 
@@ -34,9 +34,11 @@ namespace project777
                 return;
 
             }
-            /// Close();
-            using var form = new FormBD();
-            form.ShowDialog();
+            this.Hide();
+            var form = new FormBD(existUser);
+            form.Closed += (s, args) => this.Show();
+            form.Show();
+            
 
 
 
@@ -67,6 +69,19 @@ namespace project777
             {
                 textBox_password.PasswordChar = '*';
             }
+        }
+
+        private void textBox_login_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_reset_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new FormResetPassword();
+            form2.Closed += (s, args) => this.Show();
+            form2.Show();
         }
     }
 

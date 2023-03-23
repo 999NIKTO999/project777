@@ -29,36 +29,38 @@ namespace project777
         /// </summary>
         private void InitializeComponent()
         {
-            this.bt_cluecodename = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.bt_clue = new System.Windows.Forms.Button();
+            this.textBox_login = new System.Windows.Forms.TextBox();
+            this.textBox_codename = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bt_checkcodename = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // bt_cluecodename
+            // bt_clue
             // 
-            this.bt_cluecodename.Location = new System.Drawing.Point(383, 159);
-            this.bt_cluecodename.Name = "bt_cluecodename";
-            this.bt_cluecodename.Size = new System.Drawing.Size(89, 43);
-            this.bt_cluecodename.TabIndex = 0;
-            this.bt_cluecodename.Text = "Получить подсказку";
-            this.bt_cluecodename.UseVisualStyleBackColor = true;
+            this.bt_clue.Location = new System.Drawing.Point(383, 159);
+            this.bt_clue.Name = "bt_clue";
+            this.bt_clue.Size = new System.Drawing.Size(89, 43);
+            this.bt_clue.TabIndex = 0;
+            this.bt_clue.Text = "Получить подсказку";
+            this.bt_clue.UseVisualStyleBackColor = true;
+            this.bt_clue.Click += new System.EventHandler(this.bt_clue_Click);
             // 
-            // textBox1
+            // textBox_login
             // 
-            this.textBox1.Location = new System.Drawing.Point(292, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 23);
-            this.textBox1.TabIndex = 2;
+            this.textBox_login.Location = new System.Drawing.Point(292, 68);
+            this.textBox_login.Name = "textBox_login";
+            this.textBox_login.Size = new System.Drawing.Size(180, 23);
+            this.textBox_login.TabIndex = 2;
+            this.textBox_login.TextChanged += new System.EventHandler(this.textBox_login_TextChanged);
             // 
-            // textBox2
+            // textBox_codename
             // 
-            this.textBox2.Location = new System.Drawing.Point(292, 113);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 23);
-            this.textBox2.TabIndex = 3;
+            this.textBox_codename.Location = new System.Drawing.Point(292, 113);
+            this.textBox_codename.Name = "textBox_codename";
+            this.textBox_codename.Size = new System.Drawing.Size(180, 23);
+            this.textBox_codename.TabIndex = 3;
             // 
             // label1
             // 
@@ -86,6 +88,7 @@ namespace project777
             this.bt_checkcodename.TabIndex = 7;
             this.bt_checkcodename.Text = "Продолжить";
             this.bt_checkcodename.UseVisualStyleBackColor = true;
+            this.bt_checkcodename.Click += new System.EventHandler(this.bt_checkcodename_Click);
             // 
             // FormResetPassword
             // 
@@ -95,11 +98,12 @@ namespace project777
             this.Controls.Add(this.bt_checkcodename);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.bt_cluecodename);
+            this.Controls.Add(this.textBox_codename);
+            this.Controls.Add(this.textBox_login);
+            this.Controls.Add(this.bt_clue);
             this.Name = "FormResetPassword";
             this.Text = "Восстановить пароль";
+            this.Load += new System.EventHandler(this.FormResetPassword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,9 +111,9 @@ namespace project777
 
         #endregion
 
-        private System.Windows.Forms.Button bt_cluecodename;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button bt_clue;
+        private System.Windows.Forms.TextBox textBox_login;
+        private System.Windows.Forms.TextBox textBox_codename;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button bt_checkcodename;
